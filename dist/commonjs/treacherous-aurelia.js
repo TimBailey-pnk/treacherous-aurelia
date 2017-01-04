@@ -51,6 +51,54 @@ Object.keys(_validateBindingBehaviour).forEach(function (key) {
         }
     });
 });
+
+var _validationGroupAttribute = require("./attributes/validation-group-attribute");
+
+Object.keys(_validationGroupAttribute).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+        enumerable: true,
+        get: function get() {
+            return _validationGroupAttribute[key];
+        }
+    });
+});
+
+var _validationOptionsAttribute = require("./attributes/validation-options-attribute");
+
+Object.keys(_validationOptionsAttribute).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+        enumerable: true,
+        get: function get() {
+            return _validationOptionsAttribute[key];
+        }
+    });
+});
+
+var _validatePropertyAttribute = require("./attributes/validate-property-attribute");
+
+Object.keys(_validatePropertyAttribute).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+        enumerable: true,
+        get: function get() {
+            return _validatePropertyAttribute[key];
+        }
+    });
+});
+
+var _validationSummaryElement = require("./elements/validation-summary-element");
+
+Object.keys(_validationSummaryElement).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+        enumerable: true,
+        get: function get() {
+            return _validationSummaryElement[key];
+        }
+    });
+});
 exports.configure = configure;
 function configure(aurelia) {
     aurelia.globalResources("./binding-behaviours/validate-binding-behaviour");

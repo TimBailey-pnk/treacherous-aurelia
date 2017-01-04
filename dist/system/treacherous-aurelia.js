@@ -1,6 +1,6 @@
 "use strict";
 
-System.register(["./strategy/validation-strategy", "./strategy/inline-strategy", "./helper/class-helper", "./binding-behaviours/validate-binding-behaviour"], function (_export, _context) {
+System.register(["./strategy/validation-strategy", "./strategy/inline-strategy", "./helper/class-helper", "./binding-behaviours/validate-binding-behaviour", "./attributes/validation-group-attribute", "./attributes/validation-options-attribute", "./attributes/validate-property-attribute", "./elements/validation-summary-element"], function (_export, _context) {
     "use strict";
 
     var ValidationStrategy, InlineStrategy;
@@ -51,6 +51,38 @@ System.register(["./strategy/validation-strategy", "./strategy/inline-strategy",
             }
 
             _export(_exportObj4);
+        }, function (_attributesValidationGroupAttribute) {
+            var _exportObj5 = {};
+
+            for (var _key5 in _attributesValidationGroupAttribute) {
+                if (_key5 !== "default" && _key5 !== "__esModule") _exportObj5[_key5] = _attributesValidationGroupAttribute[_key5];
+            }
+
+            _export(_exportObj5);
+        }, function (_attributesValidationOptionsAttribute) {
+            var _exportObj6 = {};
+
+            for (var _key6 in _attributesValidationOptionsAttribute) {
+                if (_key6 !== "default" && _key6 !== "__esModule") _exportObj6[_key6] = _attributesValidationOptionsAttribute[_key6];
+            }
+
+            _export(_exportObj6);
+        }, function (_attributesValidatePropertyAttribute) {
+            var _exportObj7 = {};
+
+            for (var _key7 in _attributesValidatePropertyAttribute) {
+                if (_key7 !== "default" && _key7 !== "__esModule") _exportObj7[_key7] = _attributesValidatePropertyAttribute[_key7];
+            }
+
+            _export(_exportObj7);
+        }, function (_elementsValidationSummaryElement) {
+            var _exportObj8 = {};
+
+            for (var _key8 in _elementsValidationSummaryElement) {
+                if (_key8 !== "default" && _key8 !== "__esModule") _exportObj8[_key8] = _elementsValidationSummaryElement[_key8];
+            }
+
+            _export(_exportObj8);
         }],
         execute: function () {}
     };

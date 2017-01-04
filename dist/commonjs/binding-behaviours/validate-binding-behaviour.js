@@ -18,54 +18,61 @@ var ValidateBindingBehavior = exports.ValidateBindingBehavior = (_dec = (0, _aur
         
 
         this.validationStrategy = validationStrategy;
+        console.log('ValidateBindingBehavior.constructor', validationStrategy);
     }
 
     ValidateBindingBehavior.prototype.bind = function bind(binding, overrideContext) {
-        this.element = binding.target;
-        this.propertyName = this.getTargetProperty(binding);
-        this.bindingContext = overrideContext;
-    };
-
-    ValidateBindingBehavior.prototype.attached = function attached() {
         var _this = this;
 
+        var treacherousState = {
+            element: binding.target,
+            propertyName: this.getTargetProperty(binding),
+            bindingContext: overrideContext.bindingContext,
+            validationGroup: overrideContext.bindingContext.validationGroup
+        };
+        console.log('ValidateBindingBehavior.bind', treacherousState.propertyName, treacherousState.element);
+
+        console.log('ValidateBindingBehavior.attached');
         var _validationStateHandler = function _validationStateHandler(args) {
+            console.log('_validationStateHandler', args);
             if (args.isValid) {
-                _this.validationStrategy.actionValidProperty(_this.element, _this.propertyName);
+                _this.validationStrategy.actionValidProperty(treacherousState.element, treacherousState.propertyName);
             } else {
-                _this.validationStrategy.actionInvalidProperty(_this.element, _this.propertyName, args.error);
+                _this.validationStrategy.actionInvalidProperty(treacherousState.element, treacherousState.propertyName, args.error);
             }
         };
 
         var _validationPredicate = function _validationPredicate(x) {
-            return x.property == _this.propertyName;
+            console.log('_validationStateHandler', x.property, treacherousState.propertyName);
+            return x.property == treacherousState.propertyName;
         };
 
         var _setupValidation = function _setupValidation() {
-            return _this.validationGroup.propertyStateChangedEvent.subscribe(_validationStateHandler, _validationPredicate);
+            return treacherousState.validationGroup.propertyStateChangedEvent.subscribe(_validationStateHandler, _validationPredicate);
         };
 
-        if (this._isWithinChildBinding(this.bindingContext)) {
-            this.bindingContext = this.bindingContext.parentOverrideContext;
+        if (this._isWithinChildBinding(treacherousState.bindingContext)) {
+            treacherousState.bindingContext = treacherousState.bindingContext.parentOverrideContext;
         }
 
-        this.validationGroup = this.bindingContext.validationGroup;
-        this.validationOptions = this.bindingContext.validationOptions || {};
-
-        if (this.validationGroup) {
-            this.bindingContext.activeSubscription = _setupValidation();
-            this.validationGroup.getPropertyError(this.propertyName).then(function (error) {
+        if (treacherousState.validationGroup) {
+            treacherousState.activeSubscription = _setupValidation();
+            console.log('ValidateBindingBehavior.attached setup');
+            treacherousState.validationGroup.getPropertyError(treacherousState.propertyName).then(function (error) {
                 if (error) {
-                    _this.validationStrategy.actionInvalidProperty(_this.element, _this.propertyName, error);
+                    _this.validationStrategy.actionInvalidProperty(treacherousState.element, treacherousState.propertyName, error);
                 }
             });
         }
+
+        binding.treacherousState = treacherousState;
     };
 
     ValidateBindingBehavior.prototype.unbind = function unbind(binding, overrideContext) {
-        if (overrideContext.activeSubscription) {
-            overrideContext.activeSubscription();
-            overrideContext.activeSubscription = null;
+        var treacherousState = binding.treacherousState;
+        if (treacherousState && treacherousState.activeSubscription) {
+            treacherousState.activeSubscription();
+            treacherousState.activeSubscription = null;
         }
     };
 
