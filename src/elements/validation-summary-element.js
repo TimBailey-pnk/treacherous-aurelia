@@ -1,12 +1,15 @@
 import {customElement, inlineView, inject, bindable} from "aurelia-framework";
+import { I18N } from 'aurelia-i18n'
 
+@inject(I18N)
 @customElement("validation-summary")
 @inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>')
 export class ValidationSummary {
 
     @bindable validationGroup;
 
-    constructor() {
+    constructor(i18n) {
+        this.i18n = i18n;
         this.propertyErrors = [];
     }
 
@@ -20,7 +23,7 @@ export class ValidationSummary {
                 .then((errors) => {
                     this.propertyErrors = [];
                     for(var propertyName in errors) {
-                        this.propertyErrors.push({ property: propertyName, error: errors[propertyName] });
+                        this.propertyErrors.push({ property: propertyName, error: this.i18n.tr(errors[propertyName]) });
                     }
                 });
         };
