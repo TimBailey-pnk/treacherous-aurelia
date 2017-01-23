@@ -3,7 +3,7 @@ import { I18N } from 'aurelia-i18n'
 
 @inject(I18N)
 @customElement("validation-summary")
-@inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>')
+@inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.error}</li></ul></template>')
 export class ValidationSummary {
 
     @bindable validationGroup;

@@ -1,9 +1,9 @@
 "use strict";
 
-System.register(["aurelia-framework"], function (_export, _context) {
+System.register(["aurelia-framework", "aurelia-i18n"], function (_export, _context) {
     "use strict";
 
-    var customElement, inlineView, inject, bindable, _dec, _dec2, _class, _desc, _value, _class2, _descriptor, ValidationSummary;
+    var customElement, inlineView, inject, bindable, I18N, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, ValidationSummary;
 
     function _initDefineProp(target, property, descriptor, context) {
         if (!descriptor) return;
@@ -56,14 +56,17 @@ System.register(["aurelia-framework"], function (_export, _context) {
             inlineView = _aureliaFramework.inlineView;
             inject = _aureliaFramework.inject;
             bindable = _aureliaFramework.bindable;
+        }, function (_aureliaI18n) {
+            I18N = _aureliaI18n.I18N;
         }],
         execute: function () {
-            _export("ValidationSummary", ValidationSummary = (_dec = customElement("validation-summary"), _dec2 = inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = (_class2 = function () {
-                function ValidationSummary() {
+            _export("ValidationSummary", ValidationSummary = (_dec = inject(I18N), _dec2 = customElement("validation-summary"), _dec3 = inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+                function ValidationSummary(i18n) {
                     
 
                     _initDefineProp(this, "validationGroup", _descriptor, this);
 
+                    this.i18n = i18n;
                     this.propertyErrors = [];
                 }
 
@@ -80,7 +83,7 @@ System.register(["aurelia-framework"], function (_export, _context) {
                         validationGroup.getModelErrors().then(function (errors) {
                             _this.propertyErrors = [];
                             for (var propertyName in errors) {
-                                _this.propertyErrors.push({ property: propertyName, error: errors[propertyName] });
+                                _this.propertyErrors.push({ property: propertyName, error: _this.i18n.tr(errors[propertyName]) });
                             }
                         });
                     };
@@ -99,7 +102,7 @@ System.register(["aurelia-framework"], function (_export, _context) {
             }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "validationGroup", [bindable], {
                 enumerable: true,
                 initializer: null
-            })), _class2)) || _class) || _class));
+            })), _class2)) || _class) || _class) || _class));
 
             _export("ValidationSummary", ValidationSummary);
         }

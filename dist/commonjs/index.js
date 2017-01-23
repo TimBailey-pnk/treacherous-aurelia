@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _treacherousAurelia = require('./treacherous-aurelia');
+var _treacherousAurelia = require('./@noknowdev/treacherous-aurelia');
 
 Object.keys(_treacherousAurelia).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;

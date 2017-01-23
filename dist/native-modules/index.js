@@ -1,1 +1,1 @@
-export * from './treacherous-aurelia';
+export * from './@noknowdev/treacherous-aurelia';

@@ -5,9 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ValidationSummary = undefined;
 
-var _dec, _dec2, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
 
 var _aureliaFramework = require("aurelia-framework");
+
+var _aureliaI18n = require("aurelia-i18n");
 
 function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -54,12 +56,13 @@ function _initializerWarningHelper(descriptor, context) {
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var ValidationSummary = exports.ValidationSummary = (_dec = (0, _aureliaFramework.customElement)("validation-summary"), _dec2 = (0, _aureliaFramework.inlineView)('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = (_class2 = function () {
-    function ValidationSummary() {
+var ValidationSummary = exports.ValidationSummary = (_dec = (0, _aureliaFramework.inject)(_aureliaI18n.I18N), _dec2 = (0, _aureliaFramework.customElement)("validation-summary"), _dec3 = (0, _aureliaFramework.inlineView)('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+    function ValidationSummary(i18n) {
         
 
         _initDefineProp(this, "validationGroup", _descriptor, this);
 
+        this.i18n = i18n;
         this.propertyErrors = [];
     }
 
@@ -76,7 +79,7 @@ var ValidationSummary = exports.ValidationSummary = (_dec = (0, _aureliaFramewor
             validationGroup.getModelErrors().then(function (errors) {
                 _this.propertyErrors = [];
                 for (var propertyName in errors) {
-                    _this.propertyErrors.push({ property: propertyName, error: errors[propertyName] });
+                    _this.propertyErrors.push({ property: propertyName, error: _this.i18n.tr(errors[propertyName]) });
                 }
             });
         };
@@ -95,4 +98,4 @@ var ValidationSummary = exports.ValidationSummary = (_dec = (0, _aureliaFramewor
 }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "validationGroup", [_aureliaFramework.bindable], {
     enumerable: true,
     initializer: null
-})), _class2)) || _class) || _class);
+})), _class2)) || _class) || _class) || _class);

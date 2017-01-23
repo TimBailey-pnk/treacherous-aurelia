@@ -1,4 +1,4 @@
-define(['exports', './treacherous-aurelia'], function (exports, _treacherousAurelia) {
+define(['exports', './@noknowdev/treacherous-aurelia'], function (exports, _treacherousAurelia) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {

@@ -1,14 +1,14 @@
 'use strict';
 
-System.register(['./treacherous-aurelia'], function (_export, _context) {
+System.register(['./@noknowdev/treacherous-aurelia'], function (_export, _context) {
   "use strict";
 
   return {
-    setters: [function (_treacherousAurelia) {
+    setters: [function (_noknowdevTreacherousAurelia) {
       var _exportObj = {};
 
-      for (var _key in _treacherousAurelia) {
-        if (_key !== "default" && _key !== "__esModule") _exportObj[_key] = _treacherousAurelia[_key];
+      for (var _key in _noknowdevTreacherousAurelia) {
+        if (_key !== "default" && _key !== "__esModule") _exportObj[_key] = _noknowdevTreacherousAurelia[_key];
       }
 
       _export(_exportObj);

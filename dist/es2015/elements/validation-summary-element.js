@@ -1,4 +1,4 @@
-var _dec, _dec2, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
 
 function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -44,12 +44,14 @@ function _initializerWarningHelper(descriptor, context) {
 }
 
 import { customElement, inlineView, inject, bindable } from "aurelia-framework";
+import { I18N } from 'aurelia-i18n';
 
-export let ValidationSummary = (_dec = customElement("validation-summary"), _dec2 = inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = (_class2 = class ValidationSummary {
+export let ValidationSummary = (_dec = inject(I18N), _dec2 = customElement("validation-summary"), _dec3 = inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = class ValidationSummary {
 
-    constructor() {
+    constructor(i18n) {
         _initDefineProp(this, "validationGroup", _descriptor, this);
 
+        this.i18n = i18n;
         this.propertyErrors = [];
     }
 
@@ -64,7 +66,7 @@ export let ValidationSummary = (_dec = customElement("validation-summary"), _dec
             validationGroup.getModelErrors().then(errors => {
                 this.propertyErrors = [];
                 for (var propertyName in errors) {
-                    this.propertyErrors.push({ property: propertyName, error: errors[propertyName] });
+                    this.propertyErrors.push({ property: propertyName, error: this.i18n.tr(errors[propertyName]) });
                 }
             });
         };
@@ -81,4 +83,4 @@ export let ValidationSummary = (_dec = customElement("validation-summary"), _dec
 }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "validationGroup", [bindable], {
     enumerable: true,
     initializer: null
-})), _class2)) || _class) || _class);
+})), _class2)) || _class) || _class) || _class);
