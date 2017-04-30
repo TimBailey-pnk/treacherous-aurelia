@@ -60,7 +60,7 @@ System.register(["aurelia-framework", "aurelia-i18n"], function (_export, _conte
             I18N = _aureliaI18n.I18N;
         }],
         execute: function () {
-            _export("ValidationSummary", ValidationSummary = (_dec = inject(I18N), _dec2 = customElement("validation-summary"), _dec3 = inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+            _export("ValidationSummary", ValidationSummary = (_dec = inject(I18N), _dec2 = customElement("validation-summary"), _dec3 = inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
                 function ValidationSummary(i18n) {
                     
 

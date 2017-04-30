@@ -18,6 +18,10 @@ export class ValidateBindingBehavior
             validationGroup: overrideContext.bindingContext.validationGroup
         }
         console.log('ValidateBindingBehavior.bind', treacherousState.propertyName, treacherousState.element);
+        this.check = () => {
+          treacherousState.validationGroup.validateProperty(treacherousState.propertyName)
+        }
+        treacherousState.element.addEventListener('blur', this.check)
 
         console.log('ValidateBindingBehavior.attached');
         let _validationStateHandler = (args) => {
@@ -28,9 +32,9 @@ export class ValidateBindingBehavior
             { this.validationStrategy.actionInvalidProperty(treacherousState.element, treacherousState.propertyName, args.error); }
         };
 
-        let _validationPredicate = (x) => { 
-            console.log('_validationStateHandler', x.property, treacherousState.propertyName);
-            return x.property == treacherousState.propertyName; 
+        let _validationPredicate = (x) => {
+            console.log('_validationPredicate', x.property, treacherousState.propertyName);
+            return x.property == treacherousState.propertyName;
         };
 
         let _setupValidation = () => {
@@ -62,6 +66,7 @@ export class ValidateBindingBehavior
         if(treacherousState && treacherousState.activeSubscription) {
             treacherousState.activeSubscription();
             treacherousState.activeSubscription = null;
+            treacherousState.element.removeEventListener('blur', this.check)
         }
     }
 

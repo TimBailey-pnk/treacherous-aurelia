@@ -53,7 +53,7 @@ define(["exports", "aurelia-framework", "aurelia-i18n"], function (exports, _aur
 
     var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
 
-    var ValidationSummary = exports.ValidationSummary = (_dec = (0, _aureliaFramework.inject)(_aureliaI18n.I18N), _dec2 = (0, _aureliaFramework.customElement)("validation-summary"), _dec3 = (0, _aureliaFramework.inlineView)('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+    var ValidationSummary = exports.ValidationSummary = (_dec = (0, _aureliaFramework.inject)(_aureliaI18n.I18N), _dec2 = (0, _aureliaFramework.customElement)("validation-summary"), _dec3 = (0, _aureliaFramework.inlineView)('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function ValidationSummary(i18n) {
             
 

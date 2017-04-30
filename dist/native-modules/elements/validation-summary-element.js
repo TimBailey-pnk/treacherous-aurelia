@@ -48,7 +48,7 @@ function _initializerWarningHelper(descriptor, context) {
 import { customElement, inlineView, inject, bindable } from "aurelia-framework";
 import { I18N } from 'aurelia-i18n';
 
-export var ValidationSummary = (_dec = inject(I18N), _dec2 = customElement("validation-summary"), _dec3 = inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.property} - ${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+export var ValidationSummary = (_dec = inject(I18N), _dec2 = customElement("validation-summary"), _dec3 = inlineView('<template><ul class="validation-summary" show.bind="propertyErrors.length"><li repeat.for="error of propertyErrors">${error.error}</li></ul></template>'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
     function ValidationSummary(i18n) {
         
 
